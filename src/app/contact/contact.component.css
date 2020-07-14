@@ -1,0 +1,132 @@
+.main-content {
+  margin: 3% 15% 0% 15%;
+  border-style: groove;
+  border-radius: 5px;
+  padding: 15px 0 15px 0;
+}
+.main-content-orientation {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.input {
+  width: -webkit-fill-available;
+}
+
+.padding {
+  padding-left: 15px;
+}
+
+.col-1 {
+  min-width: 10%;
+  max-width: 10%;
+  flex-direction: column;
+}
+
+.col-2 {
+  min-width: 20%;
+  max-width: 20%;
+}
+
+.col-3 {
+  min-width: 30%;
+  max-width: 30%;
+}
+
+.col-4 {
+  min-width: 40%;
+  max-width: 40%;
+}
+
+.col-5 {
+  min-width: 50%;
+  max-width: 50%;
+}
+
+.col-6 {
+  min-width: 60%;
+  max-width: 60%;
+}
+
+.col-7 {
+  min-width: 70%;
+  max-width: 70%;
+}
+
+.col-8 {
+  min-width: 80%;
+  max-width: 80%;
+}
+
+.col-9 {
+  min-width: 90%;
+  max-width: 90%;
+}
+
+.col-10 {
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.offset-1 {
+  padding-left: 10%;
+}
+
+.offset-2 {
+  padding-left: 20%;
+}
+
+.offset-3 {
+  padding-left: 30%;
+}
+
+.offset-4 {
+  padding-left: 40%;
+}
+
+.offset-5 {
+  padding-left: 50%;
+}
+
+.offset-6 {
+  padding-left: 60%;
+}
+
+.offset-7 {
+  padding-left: 70%;
+}
+
+.offset-8 {
+  padding-left: 80%;
+}
+
+.offset-9 {
+  padding-left: 90%;
+}
+
+.offset-10 {
+  padding-left: 100%;
+}
+
+table {
+  width:100%;
+}
+table, th, td, caption {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+#t1 tr:nth-child(even) {
+  background-color: #eee;
+}
+#t1 tr:nth-child(odd) {
+ background-color: #fff;
+}
+#t1 th {
+  background-color: white;
+  color: black;
+}

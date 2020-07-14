@@ -1,0 +1,133 @@
+<div class="main-content main-content-orientation">
+  <div class="col-10 padding">
+    <strong>Registro de Contato</strong>
+  </div>
+  <div class="col-10">
+    <br>
+  </div>
+  <div class="col-2 padding">
+    Nome:
+    <input type="text" class="input" style="text-align: start;" [(ngModel)]="contactCreateDto.name" [disabled]="editing">
+  </div>
+  <div class="col-1 padding">
+    Canal:
+    <input type="text" class="input" style="text-align: start;" [(ngModel)]="contactCreateDto.channel" [disabled]="editing">
+  </div>
+  <div class="col-1 padding">
+    Valor:
+    <input type="text" class="input" style="text-align: start;" [(ngModel)]="contactCreateDto.value" [disabled]="editing">
+  </div>
+  <div class="col-3 padding">
+    Observação:
+    <input type="text" class="input" style="text-align: start;" [(ngModel)]="contactCreateDto.obs" [disabled]="editing">
+  </div>
+  <div class="col-2 padding">
+    <br>
+    <div class="main-content-orientation">
+      <div class="col-3 offset-6">
+        <button type="button" [disabled]="editing" (click)="createContact()">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="main-content main-content-orientation">
+  <div class="col-10 padding">
+    <strong>Busca por ID</strong>
+  </div>
+  <div class="col-10">
+    <br>
+  </div>
+  <div class="col-1 padding">
+    <input type="text" [(ngModel)]="contactId" class="input" style="text-align: end;" [disabled]="editing"
+      onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57">
+  </div>
+  <div class="col-1 padding">
+    <button type="button" (click)="findContact()" [disabled]="editing">Buscar</button>
+  </div>
+  <div class="col-10">
+    <br>
+    <br>
+  </div>
+  <div class="col-10">
+    <div class="main-content-orientation">
+      <div class="col-1 padding">
+        Id:
+        <input type="text" class="input" style="text-align: end;" [(ngModel)]="findedContact.id" disabled>
+      </div>
+      <div class="col-2 padding">
+        Nome:
+        <input type="text" class="input" style="text-align: start;" [(ngModel)]="findedContact.name" [disabled]="!editing">
+      </div>
+      <div class="col-1 padding">
+        Canal:
+        <input type="text" class="input" style="text-align: start;" [(ngModel)]="findedContact.channel" [disabled]="!editing">
+      </div>
+      <div class="col-1 padding">
+        Valor:
+        <input type="text" class="input" style="text-align: start;" [(ngModel)]="findedContact.value" [disabled]="!editing">
+      </div>
+      <div class="col-2 padding">
+        Observação:
+        <input type="text" class="input" style="text-align: start;" [(ngModel)]="findedContact.obs" [disabled]="!editing">
+      </div>
+      <div class="col-2 padding">
+        <br>
+        <div class="main-content-orientation">
+          <div class="col-3 offset-2">
+            <button type="button" [hidden]="editing" [disabled]="contactId == null" (click)="initEdit()">Editar</button>
+          </div>
+          <div class="col-4" style="padding-left: 5px;">
+            <button type="button" [hidden]="editing" [disabled]="contactId == null" (click)="deleteContact()">Deletar</button>
+          </div>
+          <div class="col-3 offset-2">
+            <button type="button" [hidden]="!editing" (click)="updateContact()">Salvar</button>
+          </div>
+          <div class="col-4" style="padding-left: 5px;">
+            <button type="button" [hidden]="!editing" (click)="cancelEdit()">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="main-content main-content-orientation">
+  <table id="t1">
+    <caption>
+      <strong>Lista de Contatos</strong>
+    </caption>
+    <thead>
+      <tr>
+        <th scope="col" *ngFor="let col of cols">{{col.header}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contact of contacts">
+        <td>{{contact.id}}</td>
+        <td>{{contact.name}}</td>
+        <td>{{contact.channel}}</td>
+        <td>{{contact.value}}</td>
+        <td>{{contact.obs}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="5">
+          <div class="main-content-orientation">
+            <div class="col-1">
+              <select name="sizes" id="sizes" [disabled]="editing" [(ngModel)]="pagination.size" (change)="pagedSearch()">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+              </select>
+            </div>
+            <div class="col-2 offset-7">
+              <button (click)="previousPage()" [disabled]="contacts.length == 0 || pagination.page == 0 || editing ? true : false">Anterior</button>
+              <button (click)="nextPage()" [disabled]="contacts.length < pagination.size || editing || disabledNextBtn? true : false">Próxima</button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
